@@ -1,0 +1,16 @@
+def solution(name, yearning, photo):
+    # 이름과 그리움 점수로 딕셔너리 생성
+    yearning_dict = dict()
+    for i in range(len(name)):
+        yearning_dict[name[i]] = yearning[i]
+
+    # 각 사진별 추억 점수 계산
+    result = []
+    for p in photo:
+        total_yearning = 0
+        for n in p:
+            if n in yearning_dict:
+                total_yearning += yearning_dict[n]
+        result.append(total_yearning)
+        
+    return answer

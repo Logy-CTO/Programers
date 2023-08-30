@@ -1,0 +1,30 @@
+def solution(park, routes):
+    ROW, COL = len(park), len(park[0])
+    grid = [[0 for c_idx in range(COL)] for r_idx in range(ROW)]
+    curr_row, curr_col = 0,0
+    
+    for r_idx in range(ROW):
+        for c_idx  in range(COL):
+            if park[r_idx][c_idx] == "X":
+                grid[r_idx][c_idx] = 1
+            elif park[r_idx][c_idx] == "S":
+                curr_row,curr_col = r_idx,c_idx
+
+    dirs = {"N":(-1, 0), "S":(1 ,0), "E":(0 ,1), "W":(0 ,-1)}
+    
+    for route in routes:
+        direction,distance = route.split()
+        dir_row,dir_col = dirs[direction]
+        is_valid = True
+        for offset in range(1,int(distance)+1):
+            new_row,new_col = curr_row + dir_row * offset, curr_col + dir_col * offset
+            if new_row in range(ROW) and new_col in range(COL) and grid[new_row][new_col] == 0:
+                pass
+            else:
+                is_valid = False
+                break
+
+        if is_valid:
+            curr_row, curr_col = new_row, new_col
+
+    return [curr_row, curr_col]

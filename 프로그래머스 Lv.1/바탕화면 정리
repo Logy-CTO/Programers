@@ -1,0 +1,17 @@
+def solution(wallpaper):
+    Sr,Sc,Er,Ec = float("inf"), float("inf"), float("-inf"),float("-inf")
+    
+    for ridx,line in enumerate(wallpaper):
+        for cidx,block in enumerate(line):
+            if block == "#":
+                Sr = min(Sr, ridx)
+                Sc = min(Sc, cidx)
+                Er = max(Er, ridx+1)
+                Ec = max(Ec, cidx+1)
+    return Sr,Sc,Er,Ec
+
+# 빈칸은 ".", 파일이 있는 칸은 "#"의 값을 가집니다. 
+# 머쓱이는 최소한의 이동거리를 갖는 한 번의 드래그로 모든 파일을 선택해서 한 번에 지우려고 하며 드래그로 파일들을 선택하는 방법은 다음과 같습니다.
+# 점 S(lux, luy)에서 점 E(rdx, rdy)로 드래그를 할 때, "드래그 한 거리"는 |rdx - lux| + |rdy - luy|로 정의합니다.
+# 머쓱이의 컴퓨터 바탕화면의 상태를 나타내는 문자열 배열 wallpaper가 매개변수로 주어질 때 바탕화면의 파일들을 한 번에 삭제하기 위해 최소한의 이동거리를 갖는 드래그의 시작점과 끝점을 담은 정수 배열을 return하는 solution 함수를 작성해 주세요.
+# 드래그의 시작점이 (lux, luy), 끝점이 (rdx, rdy)라면 정수 배열 [lux, luy, rdx, rdy]를 return하면 됩니다.

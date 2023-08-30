@@ -1,0 +1,13 @@
+def solution(players, callings):
+    
+    hashmap = dict()
+    for i,v in enumerate(players):
+        hashmap[v] = i
+    for name in callings:
+        front, back = hashmap[name]-1, hashmap[name]
+        #hashmap 내 순서 변경
+        hashmap[players[front]], hashmap[players[back]] = back, front
+        #list 내 순서 변경
+        players[front], players[back] = players[back], players[front]
+    
+    return players
