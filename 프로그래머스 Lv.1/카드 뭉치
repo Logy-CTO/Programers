@@ -1,0 +1,18 @@
+def solution(cards1, cards2, goal):
+    # 목표 리스트(goal)의 각 단어에 대해 반복문을 실행합니다.
+    for word in goal:
+        # 만약 cards1이 비어있지 않고, 그 첫 번째 단어가 현재 목표 단어와 같다면,
+        if cards1 and cards1[0] == word:
+            # 해당 단어를 cards1에서 제거합니다.
+            del cards1[0]
+        # 만약 cards2가 비어있지 않고, 그 첫 번째 단어가 현재 목표 단어와 같다면,
+        elif cards2 and cards2[0] == word:
+            # 해당 단어를 cards2에서 제거합니다.
+            del cards2[0]
+        else:
+            # 만약 위 두 경우 모두 해당되지 않는다면, 즉 현재 목표 단어가 두 카드 뭉치의 첫 번째 카드로 사용될 수 없다면,
+            # "No"를 반환하고 함수를 종료합니다. 이는 원하는 순서의 배열을 만들 수 없음을 의미합니다.
+            return "No"
+
+    # 모든 목표 단어들이 순서대로 사용되었다면, "Yes"를 반환합니다. 이는 원하는 순서의 배열을 만들 수 있음을 의미합니다.
+    return "Yes"
