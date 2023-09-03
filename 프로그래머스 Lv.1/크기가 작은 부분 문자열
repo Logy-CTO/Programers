@@ -1,0 +1,11 @@
+def solution(t, p):
+    answer = 0  # 결과를 저장할 변수
+    
+    # t의 길이에서 p의 길이를 뺀 범위까지 반복
+    for idx in range(0, len(t) - len(p) + 1):
+        t_partial = str(t[idx:idx+len(p)])  # 현재 부분문자열 추출
+        
+        if int(t_partial) <= int(p):  # 추출한 부분문자열이 p보다 작거나 같은 경우
+            answer += 1  # 결과 변수 증가
+            
+    return answer
