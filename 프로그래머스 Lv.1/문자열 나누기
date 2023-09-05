@@ -1,15 +1,18 @@
 def solution(s):
-   answer = 0  # 분해된 문자열의 개수를 저장할 변수
-   cnt1=0; cnt2=0  # 첫 글자와 그 외의 글자들이 나온 횟수를 저장할 변수
+    answer = 0  # 분해된 문자열의 개수를 저장할 변수
+    while s:  # s가 비어있지 않은 동안 반복
+        x = s[0]  # 첫 글자를 x라고 함
+        for idx in range(len(s)):  # 문자열 s의 각 인덱스에 대해
+            sub_string = s[0:idx+1]  # 현재 인덱스까지의 부분 문자열을 구함
+            x_count = sub_string.count(x)  # 부분 문자열에서 x의 개수를 센다.
+            if x_count == len(sub_string) - x_count:  
+                # 만약, x와 그 외 다른 글자들이 나온 횟수가 같다면,
+                break  # 루프를 빠져나옴 (부분 문자열을 분리하기 위함)
 
-   for i in s:  # 문자열 s의 각 문자에 대해
-       if cnt1==cnt2:  # 첫 글자와 그 외의 글자들이 나온 횟수가 같으면
-           answer+=1  # 분해된 문자열 개수 증가
-           k=i  # 첫 글자를 현재 문자로 설정
+        s = s[idx+1:]  
+        # 분리한 부분문자열을 제외하고 남은 부분으로 다시 설정하여 이 과정을 반복
 
-       if k==i:  # 현재 문자가 첫 글자와 같으면 
-           cnt1+=1  # 첫 글자 등장 횟수 증가
-       else:  
-           cnt2+=1  # 그 외의 다른 글자 등장 횟수 증가
+        answer += 1  
+        # 분리한 부분문자열 개수 증가 (x와 그 외 다른 글자들이 나온 횟수가 같아져서 분리된 경우)
 
-   return answer  
+    return answer  
