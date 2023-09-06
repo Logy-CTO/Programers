@@ -1,0 +1,15 @@
+def solution(k, score):
+    answer = []  # 결과를 저장할 리스트
+    a = []  # 임시 리스트
+
+    for i in score:  # 점수 리스트를 반복하면서 처리
+        if len(a) < k:  # 임시 리스트의 길이가 k보다 작은 경우
+            a.append(i)  # 현재 점수 i를 임시 리스트에 추가
+        else:  # 임시 리스트의 길이가 k와 같거나 큰 경우
+            if min(a) < i:  # 현재 점수 i가 임시 리스트에 있는 최소값보다 큰 경우
+                a.remove(min(a))  # 임시 리스트에서 최소값을 제거하고
+                a.append(i)  # 현재 점수 i를 추가하여 상위 k개의 값을 유지
+
+        answer.append(min(a))  # 각 위치에서의 최소값을 결과 리스트에 추가
+
+    return answer  # 결과 반환
