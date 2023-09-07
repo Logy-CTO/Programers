@@ -1,22 +1,26 @@
-def solution(number, limit, power):
-    weapon_powers = []  # 각 기사의 무기 공격력을 저장하는 리스트
-
-    for knight_number in range(1, number + 1):  # 1부터 number까지의 기사 번호에 대해 반복
-        divisor_count = 0
-
-        for divisor_candidate in range(1, int(knight_number ** (1/2)) + 1):
-            if knight_number % divisor_candidate == 0:
-                divisor_count += 1
-
-                if divisor_candidate ** 2 != knight_number:
-                    divisor_count += 1
-
-            if divisor_count > limit:
-                weapon_powers.append(power)   # 공격력 제한을 초과하는 경우 power를 추가
-                break
-        
-        else:   # break가 실행되지 않은 경우 (공격력 제한을 초과하지 않은 경우)
-            weapon_powers.append(divisor_count)   # 약수 개수를 무기 공격력으로 추가
+def number_of_divisors(num):
+    count = 0
+    divisor = 1
+    while divisor * divisor < num:
+        if num % divisor == 0:
+            count += 2   # 약수가 발견될 때마다 count를 2 증가시킴 (약수는 쌍으로 존재하기 때문)
+        divisor += 1
     
-    total_weight = sum(weapon_powers)   # 필요한 철의 총 무게 계산
-    return total_weight
+    if divisor * divisor == num:   # 제곱근이 정수인 경우 중복 약수로 처리되므로 count에 1 추가
+        count += 1
+    
+    return count
+
+
+def solution(number, limit, power):
+    steel_weight = 0
+
+    for knight_idx in range(1, number + 1):
+        attack_power = number_of_divisors(knight_idx)   # 기사의 공격력은 약수 개수로 계산
+        
+        if limit < attack_power:   # 공격력 제한을 초과하는 경우 power 값으로 대체
+            attack_power = power
+        
+        steel_weight += attack_power   # 철의 무게에 공격력 추가
+        
+    return steel_weight
