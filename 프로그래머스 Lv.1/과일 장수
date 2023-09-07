@@ -1,0 +1,13 @@
+def solution(k, m, score):
+    answer = 0
+    score.sort(reverse=True)  # 사과 점수를 내림차순으로 정렬합니다.
+    
+    for i in range(0, len(score), m):  # 상자 크기(m)만큼 인덱스를 증가시키며 반복합니다.
+        current_box = score[i:i+m]  # 현재 상자에 포함될 사과들의 점수를 임시로 저장합니다.
+        
+        if len(current_box) == m:  # 현재 상자가 완전히 채워졌다면 (사과 개수가 m개라면)
+            min_score = min(current_box)  # 최저 점수를 찾습니다.
+            box_price = min_score * m  # 한 상자의 가격을 계산합니다.
+            answer += box_price  # 최대 이익에 한 상자의 가격을 더합니다.
+        
+    return answer
