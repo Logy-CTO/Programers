@@ -1,0 +1,14 @@
+def solution(babbling):
+    answer = 0  # 올바른 발음을 사용하는 단어의 수를 저장하는 변수
+
+    for word in babbling:  # 각각의 단어에 대해
+        for sound in ['aya','ye','woo','ma']:  # 네 가지 발음에 대해
+            if sound*2 not in word:  # 같은 발음이 연속해서 나타나지 않으면
+                word = word.replace(sound,' ')  # 해당 발음을 공백으로 대체
+
+        if len(word.strip())==0:  
+            # strip() 함수로 양쪽 끝의 공백을 제거한 후, 
+            # 남아있는 문자가 없다면 (즉, 원래의 단어가 'aya', 'ye', 'woo', 'ma'로만 이루어져 있었다면)
+            answer +=1   # 카운트 증가
+
+    return answer   # 올바른 발음을 사용하는 단어의 수 반환
