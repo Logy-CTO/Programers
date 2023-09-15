@@ -1,0 +1,18 @@
+def solution(X, Y):
+    answer = ''  # 결과를 저장할 변수 초기화
+    x = set(X)   # X에 등장하는 숫자들을 중복 제거하여 집합으로 만듦
+    y = set(Y)   # Y에 등장하는 숫자들을 중복 제거하여 집합으로 만듦
+    s = sorted(x.intersection(y), reverse=True)
+    # X와 Y에서 공통으로 나타나는 숫자들을 찾아서 역순으로 정렬하여 리스트로 만듦
+
+    for i in s:  # 역순으로 정렬된 숫자들을 하나씩 반복
+        answer += str(i) * (min(X.count(i), Y.count(i)))
+        # 현재 숫자 i가 X와 Y에서 공통으로 나타난 횟수 중 작은 횟수만큼 해당 숫자를 결과에 추가함
+
+    if answer == "":  # 결과가 빈 문자열인 경우
+        return "-1"   # 공통 숫자가 없으므로 "-1" 반환
+    elif len(answer) == answer.count('0'):
+        # 결과가 '0'으로만 구성된 경우
+        return '0'    # '0' 반환
+    else:
+        return answer  # 그 외의 경우 결과를 반환
