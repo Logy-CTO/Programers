@@ -1,0 +1,17 @@
+def solution(sizes):
+    # 초기 가로 길이와 세로 길이를 0으로 설정합니다.
+    size_w = 0
+    size_h = 0
+    
+    # 주어진 모든 명함 크기에 대해 반복합니다.
+    for i in range(len(sizes)):
+        # 명함의 가로와 세로 길이를 오름차순으로 정렬합니다.
+        sizes[i].sort()
+        
+        # 현재 명함의 가로 길이와 세로 길이 중에서 가장 큰 값을 선택하여
+        # 지갑의 가로 길이(`size_w`)와 세로 길이(`size_h`)를 업데이트합니다.
+        size_w = max(size_w, sizes[i][0])
+        size_h = max(size_h, sizes[i][1])
+        
+    # 모든 명함을 수납할 수 있는 가장 작은 지갑의 크기를 계산하고 반환합니다.
+    return size_w * size_h
