@@ -1,0 +1,26 @@
+# 최고 순위와 최저 순위를 계산하는 함수
+def solution(lottos, win_nums):
+    # 맞춘 번호와 알아볼 수 없는 번호 개수 초기화
+    correct = 0
+    wrong = 0
+    
+    # lottos 리스트 순회
+    for i in range(len(lottos)):
+        # 현재 번호가 당첨 번호 리스트에 포함되면 (맞은 경우)
+        if lottos[i] in win_nums:
+            correct += 1  # 맞춘 번호 개수 증가
+        # 현재 번호가 알아볼 수 없는 번호(0)인 경우
+        if lottos[i] == 0:
+            wrong += 1  # 알아볼 수 없는 번호 개수 증가
+    
+    # 맞춘 번호 개수에 따라 순위를 계산하는 딕셔너리
+    rank = {6: 1, 5: 2, 4: 3, 3: 4, 2: 5, 1: 6, 0: 6}
+    
+    # 최고 순위 계산: 알아볼 수 없는 번호를 모두 맞은 것으로 가정
+    highest_rank = rank[correct + wrong]
+    
+    # 최저 순위 계산: 알아볼 수 없는 번호를 모두 틀린 것으로 가정
+    lowest_rank = rank[correct]
+    
+    # 최고 순위와 최저 순위를 리스트에 담아 반환
+    return [highest_rank, lowest_rank]
