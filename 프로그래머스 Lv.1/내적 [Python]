@@ -1,0 +1,9 @@
+def solution(a, b):
+    l = len(a)  # 배열 a의 길이를 저장합니다. a와 b의 길이는 같으므로 둘 중 아무거나 사용해도 됩니다.
+    answer = 0  # 내적 값을 저장할 변수를 초기화합니다.
+
+    # 배열 a와 b의 같은 인덱스에 있는 요소들을 순회하면서 내적을 계산합니다.
+    for i in range(0, l):
+        answer += a[i] * b[i]  # a[i]와 b[i]를 곱하고 그 값을 answer에 더합니다.
+
+    return answer  # 최종적으로 계산된 내적 값을 반환합니다.
