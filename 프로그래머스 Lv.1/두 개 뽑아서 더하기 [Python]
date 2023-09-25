@@ -1,0 +1,8 @@
+def solution(numbers):
+    answer = []
+    for i in range(len(numbers)):  # 첫 번째 숫자의 인덱스를 선택합니다.
+        for j in range(i+1, len(numbers)):  # 첫 번째 숫자 다음부터 마지막 숫자까지의 인덱스를 선택합니다.
+            if str(numbers[i] + numbers[j]) not in answer:  # 두 숫자의 합이 이미 answer에 존재하지 않는 경우에만 실행합니다.
+                answer.append(str(numbers[i] + numbers[j]))  # 두 숫자의 합을 문자열로 변환한 후, answer 리스트에 추가합니다.
+    answer.sort()  # 결과 리스트를 오름차순으로 정렬합니다.
+    return answer
