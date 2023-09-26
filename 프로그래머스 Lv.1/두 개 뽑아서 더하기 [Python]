@@ -6,3 +6,15 @@ def solution(numbers):
                 answer.append(str(numbers[i] + numbers[j]))  # 두 숫자의 합을 문자열로 변환한 후, answer 리스트에 추가합니다.
     answer.sort()  # 결과 리스트를 오름차순으로 정렬합니다.
     return answer
+
+
+from itertools import combinations
+
+def solution(numbers):
+    answer = set()  # 중복을 허용하지 않는 빈 집합을 생성합니다.
+    
+    # 입력된 numbers 리스트에서 2개의 숫자 조합을 생성하여 반복합니다.
+    for i in list(combinations(numbers, 2)):
+        answer.add(sum(i))  # 각 조합의 합을 answer 집합에 추가합니다.
+    
+    return sorted(answer)  # answer 집합을 정렬한 후 리스트로 변환하여 반환합니다.
