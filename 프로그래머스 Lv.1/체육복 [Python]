@@ -1,0 +1,16 @@
+def solution(n, lost, reserve):
+    answer = 0
+    # 여벌의 체육복을 가진 학생 중에서 체육복을 잃어버린 학생을 제외한 집합 생성
+    res_reserve = set(reserve) - set(lost)
+    # 체육복을 잃어버린 학생 중에서 여벌의 체육복을 가진 학생을 제외한 집합 생성
+    res_lost = set(lost) - set(reserve)
+    # 여벌의 체육복을 가진 학생들이 체육복을 빌려줌
+    for i in res_reserve:
+        # 현재 학생의 번호에서 1을 뺀 번호의 학생이 체육복을 잃어버렸다면, 그 학생에게 체육복을 빌려줌
+        if i - 1 in res_lost:
+            res_lost.remove(i - 1)
+        # 현재 학생의 번호에서 1을 더한 번호의 학생이 체육복을 잃어버렸다면, 그 학생에게 체육복을 빌려줌
+        elif i + 1 in res_lost:
+            res_lost.remove(i + 1)
+    # 최대한 많은 학생이 체육수업을 들을 수 있는 경우를 계산하여 반환
+    return n - len(res_lost)
