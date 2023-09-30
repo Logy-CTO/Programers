@@ -1,0 +1,18 @@
+def solution(array, commands):
+    answer = []
+    
+    # commands 리스트의 각 요소에 대해 반복문을 돌면서 처리합니다.
+    for i in range(len(commands)):
+        # i번째 command를 가져옵니다.
+        command = commands[i]
+        
+        # array에서 command[0]부터 command[1]까지의 부분 리스트를 추출합니다.
+        arr = array[command[0]-1:command[1]]
+        
+        # 부분 리스트를 오름차순으로 정렬합니다.
+        arr.sort()
+        
+        # 정렬된 부분 리스트에서 command[2]번째 값을 가져와서 answer에 추가합니다.
+        answer.append(arr[command[2]-1])
+    
+    return answer
