@@ -1,0 +1,16 @@
+def solution(participant, completion):
+    answer = ''
+    
+    # 참가자와 완주자 명단을 오름차순으로 정렬합니다.
+    participant.sort()
+    completion.sort()
+
+    # 완주자 명단의 길이만큼 반복문을 돌면서
+    for i in range(len(completion)):
+        # 참가자와 완주자 명단에서 같은 위치의 선수를 비교합니다.
+        if participant[i] != completion[i]:
+            # 같은 위치에서 서로 다른 이름이 나온 경우, 해당 참가자는 완주하지 못한 선수입니다.
+            return participant[i]
+                
+    # 반복문이 끝나도 참가자 중 마지막에 남은 선수는 완주하지 못한 선수입니다.
+    return participant[len(participant)-1]
