@@ -14,3 +14,29 @@ def solution(participant, completion):
                 
     # 반복문이 끝나도 참가자 중 마지막에 남은 선수는 완주하지 못한 선수입니다.
     return participant[len(participant)-1]
+
+#Hash
+def solution(participant, completion):
+    # 해시 값을 저장할 딕셔너리
+    hash_dict = {}
+    
+    # 참가자들의 해시 값의 합계를 저장할 변수
+    hash_sum = 0
+    
+    # 참가자 배열 순회
+    for part in participant:
+        # 각 참가자의 이름을 해싱하여 딕셔너리에 저장
+        hash_dict[hash(part)] = part
+        
+        # 해시 값을 합계에 더함
+        hash_sum += hash(part)
+    
+    # 완주한 선수들 배열 순회
+    for comp in completion:
+        # 완주한 선수들의 해시 값을 합계에서 뺌
+        hash_sum -= hash(comp)
+        
+    # 남은 값인 sumHash는 완주하지 못한 선수의 해시 값이 됨
+    
+    # 딕셔너리를 사용하여 완주하지 못한 선수의 이름을 찾음
+    return hash_dict[hash_sum]
