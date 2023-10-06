@@ -1,9 +1,22 @@
 def solution(d, budget):
-    answer = 0
+    # 지원된 부서의 예산 합계
+    total_supported = 0
+    # 지원된 부서의 수
+    supported_count = 0
+    
+    # 부서별 요청 금액을 오름차순으로 정렬
     d.sort()
-    for i in d:
-        budget -= i
-        if budget < 0:
+
+    # 각 부서의 요청 금액을 순회
+    for request in d:
+        # 현재 부서의 요청 금액을 지원했을 때 예산을 초과하는지 확인
+        if total_supported + request > budget:
             break
-        answer += 1
-    return answer
+        else:
+            # 부서의 요청 금액을 지원
+            total_supported += request
+            # 지원된 부서의 수 증가
+            supported_count += 1
+        
+    # 지원할 수 있는 부서의 수 반환
+    return supported_count
