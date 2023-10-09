@@ -1,0 +1,11 @@
+a, b = map(int, input().strip().split(' '))
+
+# 세로 줄 수만큼 반복
+for i in range(b):
+    # 가로의 길이인 a만큼 반복
+    for j in range(a):
+        # 별(*) 출력, end=""은 줄바꿈 없이 출력하기 위함
+        print("*", end="")
+    
+    # 내부 반복문이 끝나면 줄바꿈을 해줌
+    print()
