@@ -1,0 +1,12 @@
+def solution(x, n):
+    # 빈 리스트를 생성합니다. 이 리스트에 결과를 저장할 것입니다.
+    answer = []
+    
+    # 1부터 n까지 반복합니다.
+    for i in range(1, n+1):
+        # x에 i를 곱한 값을 리스트에 추가합니다.
+        # i는 1부터 n까지 증가하므로, x의 배수가 됩니다.
+        answer.append(x*i)
+        
+    # 결과 리스트를 반환합니다.
+    return answer
