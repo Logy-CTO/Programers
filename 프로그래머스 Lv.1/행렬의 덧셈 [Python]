@@ -1,0 +1,13 @@
+def solution(arr1, arr2):
+    answer = []  # 결과를 저장할 리스트
+
+    # arr1과 arr2의 행의 개수만큼 반복
+    for i in range(len(arr1)):
+        arr_sum = []  # 현재 행에서 덧셈 결과를 저장할 리스트
+        # 현재 행의 열의 개수만큼 반복
+        for j in range(len(arr1[0])):
+            # 같은 위치에 있는 요소들을 더하여 arr_sum에 추가
+            arr_sum.append(arr1[i][j] + arr2[i][j])
+        answer.append(arr_sum)  # 현재 행의 덧셈 결과를 answer에 추가
+
+    return answer
