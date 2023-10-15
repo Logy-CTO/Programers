@@ -1,0 +1,22 @@
+def solution(x):
+    # 숫자 x를 문자열로 변환한 뒤, 각 자릿수를 리스트로 만듭니다.
+    arr = list(str(x))
+    
+    # 각 자릿수의 합을 저장할 변수 sum을 0으로 초기화합니다.
+    sum = 0
+    
+    # 리스트 arr에 있는 모든 요소(각 자릿수)에 대해 반복합니다.
+    for i in range(len(arr)):
+        # 현재 자릿수를 정수로 변환한 후, sum에 더합니다.
+        sum += int(arr[i])
+        
+        # 만약 x가 현재까지의 합으로 나누어 떨어진다면,
+        if x % sum == 0:
+            # answer 변수를 True로 설정합니다. 이는 x가 하샤드 수임을 의미합니다.
+            answer = True
+        else:
+            # 그렇지 않다면, answer 변수를 False로 설정합니다. 이는 x가 하샤드 수가 아님을 의미합니다.
+            answer = False
+    
+    # 최종적으로 계산된 answer 값을 반환합니다. 
+    return answer
