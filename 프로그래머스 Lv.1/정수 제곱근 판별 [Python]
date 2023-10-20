@@ -1,0 +1,11 @@
+def solution(n):
+    # n의 제곱근을 계산하여 num 변수에 저장합니다.
+    num = n**0.5
+
+    # 만약 num이 정수라면 (즉, n이 어떤 정수의 제곱이라면)
+    if num == int(num):
+        # (num+1)의 제곱을 반환합니다.
+        return (num+1)**2
+    else:
+        # 만약 n이 어떤 정수의 제곱이 아니라면 -1을 반환합니다.
+        return -1
