@@ -1,0 +1,9 @@
+def solution(n):
+    answer = 0
+
+    ls = list(str(n))
+
+    for i in ls:
+        answer+=int(i)
+        
+    return answer
