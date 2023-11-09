@@ -1,0 +1,33 @@
+
+def isPrime(num):
+    for i in range(2, int(num ** 0.5)+1):
+        if num % i == 0:
+            return False
+    return True
+
+def solution(n):
+    result = 0
+    for i in range(2, n + 1):
+        if isPrime(i) != 0:
+            result += 1
+    return result
+
+에라토스테네스의 체
+def solution(n):
+    answer = 0
+    array = [True for i in range(n+1)]
+    
+    for i in range(2, int(n**0.5)+1):
+        if array[i]==True:
+            j=2
+            
+            while i*j<=n:
+                array[i*j] = False
+                j+=1
+    
+    for i in range(2,n+1):
+        if array[i]:
+            answer+=1
+            
+    return answer
+
