@@ -1,0 +1,39 @@
+def solution(targets):
+    targets = sorted(targets) # (1)
+    answer = 1
+    aim_start, aim_end = targets.pop(0) # (2)
+
+    for target in targets: # (3)
+        target_start, target_end = target
+        if target_start < aim_end: # (4)
+            aim_start = max(aim_start, target_start)
+            aim_end = min(aim_end, target_end)
+        else:
+            aim_start, aim_end = target_start, target_end
+            answer += 1 # (5)
+
+    return answer 
+(1) targets = sorted(targets)
+이 코드는 targets 리스트를 정렬하는 부분입니다. sorted 함수는 기본적으로 오름차순 정렬을 수행하므로, 
+이 경우 각 폭격 미사일의 시작 지점을 기준으로 오름차순 정렬이 됩니다.
+
+(2) aim_start, aim_end = targets.pop(0)
+이 코드는 정렬된 targets 리스트에서 첫 번째 요소를 꺼내어 aim_start와 aim_end에 할당하는 부분입니다. 
+aim_start와 aim_end는 현재 요격하려는 폭격 미사일의 시작 지점과 끝나는 지점을 나타냅니다.
+
+(3) for target in targets:
+이 코드는 targets 리스트를 순회하는 반복문입니다. 각 target은 [start, end] 형태의 리스트로, 
+폭격 미사일의 x 좌표 범위를 나타냅니다.
+
+(4) if target_start < aim_end:
+이 코드는 현재 폭격 미사일의 시작 지점이 이전에 요격한 폭격 미사일의 끝나는 지점보다 앞에 있으면, 즉 두 폭격 미사일이 겹치는 경우를 나타냅니다. 
+이 경우에는 겹치는 부분을 새로운 요격 대상으로 설정하고, 요격 미사일은 추가로 발사하지 않습니다.
+
+(5) answer += 1
+이 코드는 현재 폭격 미사일의 시작 지점이 이전에 요격한 폭격 미사일의 끝나는 지점보다 뒤에 있으면,
+즉 두 폭격 미사일이 겹치지 않는 경우를 나타냅니다. 이 경우에는 새로운 요격 미사일을 발사해야 하므로 answer를 1 증가시킵니다.
+
+이렇게 분석하면, 이 코드는 겹치는 폭격 미사일들을 한 번에 요격하려는 전략을 구현한 것임을 알 수 있습니다. 
+폭격 미사일들을 시작 지점이 작은 순서로 정렬한 후, 각 폭격 미사일이 이전에 요격한 폭격 미사일과 겹치는지를 확인하고, 
+겹치는 경우에는 겹치는 부분을 새로운 요격 대상으로 설정하며, 겹치지 않는 경우에는 새로운 요격 미사일을 발사합니다. 
+이 과정을 반복하면 모든 폭격 미사일을 최소한의 요격 미사일로 처리할 수 있습니다.
