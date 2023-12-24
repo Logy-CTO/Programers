@@ -1,0 +1,17 @@
+def solution(people, limit):
+    people.sort()  # 사람들의 몸무게를 오름차순으로 정렬
+    count = 0  # 필요한 구명보트 개수를 저장하는 변수
+    left = 0  # 가장 가벼운 사람의 인덱스
+    right = len(people) - 1  # 가장 무거운 사람의 인덱스
+
+    while left <= right:
+        if people[left] + people[right] <= limit:
+            # 가장 가벼운 사람과 가장 무거운 사람이 함께 탈 수 있는 경우
+            left += 1  # 가장 가벼운 사람을 구출했으므로 다음 가벼운 사람으로 이동
+            right -= 1  # 가장 무거운 사람을 구출했으므로 다음 무거운 사람으로 이동
+        else:
+            # 가장 가벼운 사람과 가장 무거운 사람이 함께 탈 수 없는 경우
+            right -= 1  # 가장 무거운 사람만 태우고 다음 무거운 사람으로 이동
+        count += 1  # 구명보트 한 대 추가
+
+    return count
