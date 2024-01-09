@@ -1,0 +1,18 @@
+def solution(want, number, discount):
+    answer = 0
+    wantlist = []
+    
+    for i in range(len(want)):
+        for j in range(number[i]):
+            wantlist.append(want[i])
+    
+    wantlist.sort()
+    print(wantlist)
+    
+    for i in range(len(discount)):
+        list = discount[i:i+10]
+        list.sort()
+        if wantlist == list:
+            answer+=1
+            
+    return answer
