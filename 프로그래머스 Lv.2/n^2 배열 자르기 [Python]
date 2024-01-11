@@ -1,0 +1,14 @@
+def solution(n, left, right):
+    answer = []
+    #0 123
+    #1 223
+    #2 333
+    #for i in range(n):
+    #   for j in range(n):
+    #       answer.append(max(i,j) + 1)
+    for idx in range(left,right+1):
+        row = idx // n #행
+        col = idx % n  #열
+        answer.append(max(row,col)+1)
+    
+    return answer
