@@ -28,3 +28,4 @@ def solution(park, routes):
             curr_row, curr_col = new_row, new_col
 
     return [curr_row, curr_col]
+    
