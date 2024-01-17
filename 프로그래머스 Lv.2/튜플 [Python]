@@ -1,0 +1,15 @@
+def solution(s):
+    num_count = dict()
+    
+    s = s.replace("}","").replace("{","").split(",")
+    
+    for c in s:
+        c = int(c)
+        if c in num_count:
+            num_count[c] += 1
+        else:
+            num_count[c] = 1
+    
+    answer = sorted(num_count, key=lambda x:num_count[x], reverse=True)
+    
+    return answer
