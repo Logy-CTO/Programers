@@ -1,0 +1,15 @@
+answer = 0
+
+def dfs(n, n_sum, numbers, target):
+    global answer  # global 키워드를 추가
+    if n == len(numbers):
+        if n_sum == target:
+            answer += 1
+        return
+    dfs(n + 1, n_sum + numbers[n], numbers, target)
+    dfs(n + 1, n_sum - numbers[n], numbers, target)
+
+def solution(numbers, target):
+    global answer  # global 키워드를 추가
+    dfs(0, 0, numbers, target)
+    return answer
