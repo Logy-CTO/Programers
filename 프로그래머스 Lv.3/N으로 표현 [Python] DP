@@ -1,0 +1,21 @@
+def solution(N, number):
+    num = []
+    
+    for i in range(1, 9):
+        case = {int(str(N)*i)}
+        
+        for j in range(0, i-1):  
+            for x in num[j]:
+                for y in num[-j-1]:
+                    case.add(x+y) # 덧셈
+                    case.add(x-y) # 뺄셈
+                    case.add(x*y) # 곱셈
+                    if y != 0:
+                        case.add(x//y) 
+               
+        if number in case:
+            return i
+        
+        num.append(case)
+        
+    return -1
