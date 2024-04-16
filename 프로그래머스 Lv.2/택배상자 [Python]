@@ -1,0 +1,13 @@
+def solution(order):
+    assist = []    # 주문을 도와주는 보조 스택
+    i = 1    # 주문번호
+    cnt = 0   # 서빙한 주문 개수
+    # 주문번호가 주문의 총 개수보다 작을 때까지 반복
+    while i != len(order) + 1:
+        assist.append(i)  # 보조 스택에 주문번호 추가
+        # 보조 스택이 비어있지 않고, 보조 스택의 가장 위에 있는 주문번호가 서빙해야 할 주문번호와 같을 때까지 반복
+        while assist and assist[-1] == order[cnt]:
+            cnt += 1  # 주문번호 서빙
+            assist.pop()  # 보조 스택에서 서빙된 주문번호 제거
+        i += 1  # 다음 주문번호로 이동
+    return cnt  # 서빙한 주문 개수 반환
