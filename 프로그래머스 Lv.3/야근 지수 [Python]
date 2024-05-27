@@ -1,0 +1,28 @@
+from heapq import heapify, heappush, heappop
+
+def solution(n, works):
+    answer = 0 
+
+    # 전체 작업량이 n보다 큰 경우에만 처리
+    if sum(works) > n:
+        # 최대 힙을 만들기 위해 음수로 변환
+        work = [-i for i in works]
+        heapify(work)
+        
+        # n만큼 작업 줄이기
+        while n > 0:
+            # 가장 큰 작업량 꺼내기 (음수이므로 가장 작은 값)
+            max_work = heappop(work)
+            # 작업량 줄이기 (음수이므로 1을 더함)
+            heappush(work, max_work + 1)
+            n -= 1
+        
+        # 남은 작업량의 제곱합 계산
+        for x in work:
+            answer += x ** 2
+        
+        return answer
+        
+    else:
+        # 전체 작업량이 n보다 작거나 같은 경우
+        return 0
