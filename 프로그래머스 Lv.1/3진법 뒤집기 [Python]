@@ -7,3 +7,4 @@ def solution(n):
         answer += str(rest)   # 나머지를 문자열로 변환하여 answer에 추가
         
     return int(answer, 3)   # answer를 기저(base)가 3인 숫자 시스템에서 정수로 변환하여 반환
+ 
