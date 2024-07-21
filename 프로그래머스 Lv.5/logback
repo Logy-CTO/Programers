@@ -9,7 +9,7 @@
   <!-- %black", "%red", "%green", "%yellow", "%blue", "%magenta",
   "%cyan", "%white", "%gray", "%boldRed", "%boldGreen", "%boldYellow",
   "%boldBlue", "%boldMagenta", "%boldCyan", "%boldWhite" and "%highlight" -->
-
+  
   <!-- Appenders -->
   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
