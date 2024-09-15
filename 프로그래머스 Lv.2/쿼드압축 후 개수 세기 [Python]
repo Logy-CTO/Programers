@@ -1,0 +1,35 @@
+def solution(arr):
+    # 압축된 결과를 반환하는 재귀 함수 정의
+    def compress(x, y, size):
+        initial = arr[y][x]  # 현재 영역의 첫 번째 값 저장
+        same = True  # 모든 값이 같은지 여부를 체크하는 변수
+
+        # 현재 영역의 모든 값이 같은지 확인
+        for i in range(y, y + size):
+            for j in range(x, x + size):
+                if arr[i][j] != initial:
+                    same = False  # 값이 다르면 False로 변경
+                    break  # 내부 루프 종료
+            if not same:
+                break  # 외부 루프 종료
+
+        # 만약 모든 값이 같다면
+        if same:
+            if initial == 0:
+                return [1, 0]  # [0의 개수, 1의 개수]
+            else:
+                return [0, 1]
+        else:
+            # 영역을 4분할하여 재귀적으로 처리
+            half = size // 2
+            top_left = compress(x, y, half)
+            top_right = compress(x + half, y, half)
+            bottom_left = compress(x, y + half, half)
+            bottom_right = compress(x + half, y + half, half)
+            # 각 영역의 결과를 합산하여 반환
+            return [top_left[0] + top_right[0] + bottom_left[0] + bottom_right[0],
+                    top_left[1] + top_right[1] + bottom_left[1] + bottom_right[1]]
+
+    # 전체 배열에 대해 재귀 함수 호출
+    result = compress(0, 0, len(arr))
+    return result
